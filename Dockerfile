@@ -18,7 +18,7 @@
 FROM ubuntu:latest
 MAINTAINER Mauro Novillo <maurohernan.novillo@swissmedical.com.ar>
 
-RRUN apt-get update
+RUN apt-get update
 RUN apt-get install -y build-essential g++ curl libssl-dev apache2-utils git libxml2-dev tmux python-setuptools zsh wget git-core htop vim
 RUN chsh -s /usr/bin/zsh root
 
