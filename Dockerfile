@@ -18,9 +18,8 @@
 FROM ubuntu:latest
 MAINTAINER Mauro Novillo <maurohernan.novillo@swissmedical.com.ar>
 
-
-RUN apt-get update
-RUN apt-get install -y build-essential g++ curl libssl-dev apache2-utils git libxml2-dev tmux python-setuptools zsh wget git-core htop vim openssl libgdbm-dev libncurses5-dev automake libtool bison libffi-dev unzip
+RRUN apt-get update
+RUN apt-get install -y build-essential g++ curl libssl-dev apache2-utils git libxml2-dev tmux python-setuptools zsh wget git-core htop vim
 RUN chsh -s /usr/bin/zsh root
 
 
@@ -28,17 +27,9 @@ RUN chsh -s /usr/bin/zsh root
 # Install NPM 
 # ------------------------------------------------------------------------------
 # Install Node.js
-RUN apt-get install -y nodejs-legacy nodejs npm
+RUN apt-get install -y nodejs-legacy nodejs npm   
 # ------------------------------------------------------------------------------
 
-# install RVM, Ruby, and Bundler
-RUN \curl -L https://get.rvm.io | bash -s stable
-RUN /bin/bash -l -c "rvm requirements"
-RUN /bin/bash -l -c "rvm install 2.4.1"
-RUN /bin/bash -l -c "gem install bundler --no-ri --no-rdoc"
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# ------------------------------------------------------------------------------
 # Install NVM
 RUN git clone https://github.com/creationix/nvm.git /.nvm
 RUN echo ". /.nvm/nvm.sh" >> /etc/bash.bashrc
