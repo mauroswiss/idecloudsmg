@@ -34,9 +34,7 @@ RUN apt-get install -y nodejs-legacy nodejs npm
 RUN git clone https://github.com/creationix/nvm.git /.nvm
 RUN echo ". /.nvm/nvm.sh" >> /etc/bash.bashrc
 RUN /bin/bash -c '. /.nvm/nvm.sh && \
-    nvm install v0.12.6 && \
-    nvm use v0.12.6 && \
-    nvm alias default v0.12.6'
+    nvm install lts/carbon'
 
 # ------------------------------------------------------------------------------
 # Install Cloud9SDK
@@ -56,7 +54,6 @@ RUN sed -i -e "s/127.0.0.1/0.0.0.0/g" /c9sdk/configs/standalone.js
 # Install Meteor, PhantomJS and forever
 RUN curl https://install.meteor.com/ | sh
 RUN npm install -g phantomjs-prebuilt forever
-
 # ------------------------------------------------------------------------------
 # Add volumes
 RUN mkdir /workspace
